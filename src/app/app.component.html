@@ -1,2 +1,32 @@
-<h1>Hola Mundo</h1>
-<h1>Hola Mundo</h1>
+<div class="container mt-4">
+    <div class="posicion">
+        <div>
+            <h3>Listado de estudiantes</h3>
+        </div>
+        
+    </div>
+
+    <br />
+    <table class="table" *ngIf="listadoEstudiantes.length > 0">
+        <thead>
+            <tr>
+                <th>Nro</th>
+                <th>Nombre</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let estudiante of listadoEstudiantes; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{estudiante.nombre}}</td>
+                <td>
+                    <span [ngClass]="estudiante.estado === 'Aprobado' ? 'text-success' : 'text-danger'">
+                        {{estudiante.estado}}
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="text-center text-danger" *ngIf="listadoEstudiantes.length === 0">No hay datos para mostrar</h3>
+</div>
